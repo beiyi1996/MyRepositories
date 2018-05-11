@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>My_Schedule</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <style>
+        ul li {
+            list-style-type: none;
+        }
+
+        ul {
+            padding-left: 0px !important;
+        }
+    </style>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row mt-4">
+            <div class="col text-right">
+                <div class="row">
+                    <div class="col-1 mt-4">
+                        <i class="fas fa-chevron-circle-left fa-2x" style="color:rgb(255, 174, 147);" id="left"></i>
+                    </div>
+                    <div class="col text-center">
+                        <div class="row mt-3">
+                            <div class="col" id="month">
+
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col" id="year">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-1 mt-4">
+                        <i class="fas fa-chevron-circle-right fa-2x" style="color:rgb(255, 174, 147);" id="right"></i>
+                    </div>
+                    <div class="col-1 mt-3">
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-link rounded-circle" data-toggle="modal" data-target="#exampleModalCenter" style="color:darkseagreen;">
+                            <i class="fas fa-plus-circle fa-2x"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col mt-4">
+                        <table class="table text-left" style="height:1000px;">
+                            <thead style="text-align:center;">
+                                <tr>
+                                    <td>Sun</td>
+                                    <td>Mon</td>
+                                    <td>Tue</td>
+                                    <td>Wed</td>
+                                    <td>Thu</td>
+                                    <td>Fri</td>
+                                    <td>Sat</td>
+                                </tr>
+                            </thead>
+                            <tbody id="table">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" style="font-family:Microsoft JhengHei;" aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">新增行程</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">標題</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control form-control-sm" id="input" placeholder="topic">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">日期</label>
+                                <div class="col-sm-10">
+                                    <input type="date" class="form-control form-control-sm" id="date" placeholder="date">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">時間</label>
+                                <div class="col-sm-10">
+                                    <input type="time" class="form-control form-control-sm" id="time" placeholder="time">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">顏色</label>
+                                <div class="col-sm-10">
+                                    <div class="form-group">
+                                        <input type="color" onkeypress="return Search(event)" class="form-control" name="" id="color" aria-describedby="helpId" placeholder="color">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">地址</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control form-control-sm" name="" id="place" placeholder="">
+                                </div>
+                                <div class="col-xs-1">
+                                    <button style="background-color:transparent; border-style: none;" id="search">
+                                        <i class="fas fa-search" style="color:seagreen;"></i>
+                                    </button>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col" id="map" style="height:200px;">
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-dismiss="modal" id="close">Close</button>
+                            <button type="button" class="btn btn-light" id="save">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modifyexampleModalCenter" tabindex="-1" role="dialog" style="font-family:Microsoft JhengHei;"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modify">修改行程</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">標題</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control form-control-sm" id="modifyinput" placeholder="topic">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">日期</label>
+                                <div class="col-sm-10">
+                                    <input type="date" class="form-control form-control-sm" id="modifydate" placeholder="date">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">時間</label>
+                                <div class="col-sm-10">
+                                    <input type="time" class="form-control form-control-sm" id="modifytime" placeholder="time">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">顏色</label>
+                                <div class="col-sm-10">
+                                    <div class="form-group">
+                                        <input type="color" class="form-control" name="" id="modifycolor" aria-describedby="helpId" placeholder="color">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="colFormLabelSm" class="col-sm-2 col-form-label col-form-label-sm">地址</label>
+                                <div class="col-sm-9">
+                                    <input type="email" class="form-control form-control-sm" name="" id="modifyplace" placeholder="place">
+                                </div>
+                                <div class="col-xs-1">
+                                    <button style="background-color:transparent; border-style: none;" id="modifysearch">
+                                        <i class="fas fa-search" style="color:seagreen;"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col" id="map2" style="height:200px;">
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-light" data-dismiss="modal" id="modifydelete">Delete</button>
+                            <button type="button" class="btn btn-light" data-dismiss="modal" id="modifysave">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                var today = new Date();
+                var thismonth_firstday = new Date(); //取得今天的日期
+                var thismonth = new Date(thismonth_firstday.getFullYear(), thismonth_firstday.getMonth(), thismonth_firstday.getDate()); //取得當天的年、月、日
+                var table = document.querySelector("#table"); //找到我的table,讓等一下長月曆的時候可以加進去
+                //console.log(thismonth + "記錄這個月");
+                //console.log(thismonth_firstday + "表格的第一格，會一直改變");
+                createcalender();
+                function createcalender() {
+                    document.getElementById("table").innerHTML = ""; //清空月曆,因為跳下個月的時候就用重新長一張月曆
+                    thismonth_firstday = new Date(thismonth.getFullYear(), thismonth.getMonth()); //取得當月的年、月
+                    thismonth_firstday.setDate(1); //設定日期為當月的 1號,就可以知道現在是幾月
+                    while (thismonth_firstday.getDay() != 0) { //如果當月的1號不是星期天
+                        thismonth_firstday.setDate(thismonth_firstday.getDate() - 1); //就依序減1天,直到那個日期是禮拜天,就開始印月曆
+                    }
+                    for (var i = 1; i <= 6; i++) { //長出7X6的表格
+                        var tr = document.createElement("tr");
+                        for (var j = 1; j <= 7; j++) {
+                            var td = document.createElement("td");
+                            var keydate = thismonth_firstday.getFullYear(); //因為localStorage裡的key值是2018-xx-xx,但是因為現在還不知道是不是10月以下,要不要補0,所以就先取得月,之後再去判斷是否需要補0
+                            if (thismonth.getMonth() == thismonth_firstday.getMonth()) { //比較thismonth的月份跟thismonth_firstday的月份是否一樣
+                                //console.log(thismonth_firstday.getMonth(), thismonth_firstday.getMonth());
+                            }
+                            else {
+                                td.style = "color:lightgray;width:200px;"; //如果不是本月的日期就變成灰色的數字
+                            }
+                            if (thismonth_firstday.getDate() == today.getDate() && thismonth_firstday.getMonth() == today.getMonth()) {
+                                td.style = "background-color:lightyellow;";
+                            }
+                            if (thismonth_firstday.getMonth() < 10) { //如果月份小於10,就必須補"-" + "0"
+                                keydate += "-" + "0" + (thismonth_firstday.getMonth() + 1); //+1 : 因為程式是從0開始計算,如果沒有+1就會變成0~11月, +1後就會變成1~12月
+                            }
+                            else {
+                                keydate += "-" + (thismonth_firstday.getMonth() + 1);
+                            }
+                            if (thismonth_firstday.getDate() < 10) { //如果日期小於10,就必須補"-" + "0"
+                                keydate += "-" + "0" + thismonth_firstday.getDate();
+                            }
+                            else {
+                                keydate += "-" + thismonth_firstday.getDate();
+                            }
+                            // console.log(keydate);
+                            td.innerHTML += thismonth_firstday.getDate(); //把日期顯示在td的text裡
+                            if (localStorage.getItem(keydate) !== null) { //如果我在localStorage裡有找到keydate,如果keydate裡有行程就直接連行程一起長出來 
+                                // console.log("!!");
+                                var tmp = JSON.parse(localStorage.getItem(keydate)); //因為要給code讀,所以要轉成物件
+                                var ul = document.createElement("ul");
+                                var index = 0; //設定keydate的索引值從0開始
+                                //console.log(tmp);
+                                for (var item of tmp.detail) { //長行程,所以要先從我已存到localStorage裡取得key值的detail,在一個一個拿出來顯示
+                                    var button = document.createElement("button");
+                                    var li = document.createElement("li");
+                                    //console.log(button.dataset.target);
+                                    button.dataset.target = "#modifyexampleModalCenter"; //當我按下button的時候要跳出modal的互動視窗,所以要設定target的屬性值是modal的id(取得modal的樣式)
+                                    //console.log(button.dataset.target);
+                                    button.dataset.toggle = "modal"; //toggle:切換視窗的意思,所以當我按下button的時候就切換視窗到modal,設定toggle的屬性值是modal
+                                    //console.log(button.dataset.toggle);
+                                    button.id = keydate + "," + index; //因為行程要長在指定的那天,所以要取得keydate,但一天可能會有兩件事以上,所以必須給事件序號編排,方便查詢
+                                    button.innerHTML = item.time + " " + item.input; //顯示行程的時間跟標題在按鈕上
+                                    button.style = "font-size:15px; color:" + item.color;
+                                    button.className = "btn btn-block btn-link text-left";
+                                    li.style = "list-style:none";
+                                    ul.style = "width:200px;"
+                                    button.onclick = function () { //當我按下行程按鈕時,要可以修改行程,所以把方法寫在onclick事件裡
+                                        var data1 = this.id.split(','); //必須先取得keydate但剛剛為了方便搜尋,加上了序號,但瀏覽器的日期是沒有序號的,所以必須以','分割keydate,data1是一個陣列,存著"2018-0x-0x"(日期),"0"(序號)
+                                        var localdetail = JSON.parse(localStorage.getItem(data1[0])).detail[data1[1]]; //從瀏覽器上取得該行程的日期、當天的第幾筆事件的細項
+                                        //console.log(localdetail);
+                                        document.getElementById("modifyinput").value = localdetail.input; //顯示在我要修改的modal視窗裡
+                                        document.getElementById("modifydate").value = data1[0];
+                                        document.getElementById("modifytime").value = localdetail.time;
+                                        document.getElementById("modifycolor").value = localdetail.color;
+                                        document.getElementById("modifysave").value = this.id; //儲存修改的按鈕id必須設定成當天的日期及事件的序號,這樣瀏覽器才知道修改的是哪一項,要儲存的又是哪一項
+                                        //console.log(this.id);
+                                        document.getElementById("modifydelete").value = this.id; //這樣要刪除的也才會知道是哪一項(避免刪錯)
+                                        document.getElementById("modifyplace").value = localdetail.place;
+                                        document.getElementById("modifyplace").name = localdetail.latlng;
+                                        console.log(localdetail.latlng);
+                                        var splitlatlng = localdetail.latlng.split(",");
+                                        map2.setCenter(new google.maps.LatLng(splitlatlng[0], splitlatlng[1]));
+                                        marker2 = new google.maps.Marker({
+                                            position: new google.maps.LatLng(splitlatlng[0], splitlatlng[1]),
+                                            map: map2,
+                                            title: "You're here!!"
+                                        });
+                                    }
+                                    li.appendChild(button);
+                                    ul.appendChild(li); //新增行程
+                                    index++; //序號加1,如果有第二件事的時候就會自動排序
+                                }
+                                //console.log(ul);
+                                td.appendChild(ul); //把行程加到格子裡
+                                //console.log(td);
+                            }
+                            tr.appendChild(td); //把格子加到行裡
+                            thismonth_firstday.setDate(thismonth_firstday.getDate() + 1); //下一天,繼續判斷當天是否有行程,如果有,就先跟著格子一起長出來,如果沒有就長一般月曆,直到一個新的禮拜都長好,就到下一個禮拜
+                            table.appendChild(tr); //每長好一個禮拜,就把他加到表格裡
+                        }
+                    }
+                    document.getElementById("month").innerHTML = thismonth.getMonth() + 1; //因為是從0開始計算，所以要加1才會變成1~12月
+                    document.getElementById("year").innerHTML = thismonth.getFullYear();
+                }
+
+                document.getElementById("left").onclick = function () {
+                    thismonth.setMonth(thismonth.getMonth() - 1);
+                    createcalender();
+                }
+
+                document.getElementById("right").onclick = function () {
+                    thismonth.setMonth(thismonth.getMonth() + 1);
+                    createcalender();
+                }
+
+                document.getElementById("modifysave").onclick = function () {
+                    var key = this.value;
+                    console.log(key);
+                    var tmp = key.split(',');
+                    var data = JSON.parse(localStorage.getItem(tmp[0]));
+                    data.detail.splice(tmp[1], 1);
+                    localStorage.setItem(tmp[0], JSON.stringify(data));
+                    SaveData("modifyinput", "modifydate", "modifytime", "modifycolor", "modifyplace", "modifyplace")
+                }
+
+                document.getElementById("modifydelete").onclick = function () {
+                    var key = this.value;
+                    var tmp = key.split(',');
+                    var data = JSON.parse(localStorage.getItem(tmp[0]));
+                    data.detail.splice(tmp[1], 1);
+                    localStorage.setItem(tmp[0], JSON.stringify(data));
+                    createcalender();
+                }
+
+                function SaveData(INPUT, DATE, TIME, COLOR, PLACE) { //儲存我的行程細項
+                    var event = { //用一個物件存事件的細項
+                        input: document.getElementById(INPUT).value, //input屬性存放input欄位的值
+                        time: document.getElementById(TIME).value, //time屬性存放time欄位的值
+                        color: document.getElementById(COLOR).value, //color屬性存放color的值
+                        place: document.getElementById(PLACE).value, //palce屬性存放place的值
+                        latlng: document.getElementById(PLACE).name
+                    }
+                    //console.log(event);
+                    if (localStorage.getItem(document.getElementById(DATE).value) === null) { //如果我的那天沒有行程
+                        var anotherdate = { //一樣用一個物件存放我的細項
+                            date: document.getElementById(DATE).value, //date屬性存放date欄位的值
+                            detail: [] //用來存放event裡的細項
+                        }
+                        anotherdate.detail.push(event); //將細項存到anotherdate的detail陣列裡
+                        //console.log(event.place);
+                        localStorage.setItem(document.getElementById(DATE).value, JSON.stringify(anotherdate)); //把我的key(日期2018-0x-0x)跟value(細項)存到localStorage裡
+                        //console.log(localStorage.getItem(document.getElementById(DATE).value));
+                    }
+                    else { //如果我要加另一個行程的時候
+                        var newevent = JSON.parse(localStorage.getItem(document.getElementById(DATE).value)); //取得我的key值(2018-0x-0x)
+                        newevent.detail.push(event); //把新的行程加進去
+                        localStorage.setItem(document.getElementById(DATE).value, JSON.stringify(newevent)); //找到key值(2018-0x-0x)後,把我的新行程細項存到localStorage裡
+                    }
+                    createcalender(); //重新長一個有行程的月曆
+                }
+
+                document.getElementById("save").onclick = function () { //按下save change按鈕後,儲存我已新增的行程
+                    SaveData("input", "date", "time", "color", "place", "place");
+                }
+            </script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrFRvUVRTi5bGIC-dQa71ZK-5ZMPUiIOA" async defer></script>
+            <script type="text/javascript">
+                var map, map2;
+                var marker = null, marker2 = null;
+                var center = { lat: 24.7571075, lng: 120.952429 };
+                var Service = null;
+                var Display = null;
+                //var place = document.getElementById("place").value;
+                //var modifyplace = document.getElementById("modifyplace").value;
+                var lat = "";
+                window.onload = function () {
+                    map = new google.maps.Map(
+                        document.getElementById('map'), {
+                            center: center,
+                            zoom: 15
+                        });
+                    map2 = new google.maps.Map(
+                        document.getElementById('map2'), {
+                            center: center,
+                            zoom: 15
+                        });
+
+                    Service = new google.maps.DirectionsService();
+                    Display = new google.maps.DirectionsRenderer();
+                    Display.setMap();
+                    document.getElementById("search").onclick = function () {
+                        var address = document.getElementById("place").value;
+                        var geocoder = new google.maps.Geocoder();
+                        var infowindow = new google.maps.InfoWindow;
+                        geocoder.geocode(
+                            { 'address': document.getElementById("place").value },
+                            function (results, status) {
+                                console.log(address);
+                                if (status == 'OK') {
+                                    map.setCenter(results[0].geometry.location);
+                                    if (marker == null) {
+                                        marker = new google.maps.Marker({
+                                            position: results[0].geometry.location,
+                                            map: map,
+                                            title: "You're here!!"
+                                        });
+                                        //console.log(e.latLng.lat() + ',' + e.latLng.lng());
+                                    }
+                                    else {
+                                        marker.setPosition(results[0].geometry.location);
+                                        //console.log(e.latLng.lat() + ',' + e.latLng.lng());
+                                    }
+                                    infowindow.setContent(results[0].formatted_address);
+                                    //console.log(results[0].formatted_address);
+                                    infowindow.open(map, marker);
+                                } else {
+                                    alert('Geocode was not successful for the following reason: ' + status);
+                                }
+                            }
+                        )
+                    }
+                    map.addListener("click", function (e) {
+                        map.setCenter(e.latLng); //取得滑鼠點到的地方的經緯度
+                        if (marker == null) {
+                            marker = new google.maps.Marker({
+                                position: e.latLng,
+                                map: map,
+                                title: "You're here!!"
+                            });
+                            //console.log(e.latLng.lat() + ',' + e.latLng.lng());
+                        }
+                        else {
+                            marker.setPosition(e.latLng);
+                            //console.log(e.latLng.lat() + ',' + e.latLng.lng());
+                        }
+
+                        var geocoder = new google.maps.Geocoder;
+                        var infowindow = new google.maps.InfoWindow;
+
+                        geocoder.geocode({
+                            'location': {
+                                lat: e.latLng.lat(),
+                                lng: e.latLng.lng()
+                            }
+                        }, function (results, status) {
+                            if (status === 'OK') {
+                                document.getElementById("place").value = results[0].formatted_address;
+                                document.getElementById("place").name = e.latLng.lat() + "," + e.latLng.lng();
+                                //console.log(e.latLng.lat() + "," + e.latLng.lng());
+                                //console.log(e.latLng.lat() + ',' + e.latLng.lng());
+                                if (results[0]) {
+                                    map.setZoom(11);
+                                    infowindow.setContent(results[0].formatted_address);
+                                    //console.log(results[0].formatted_address);
+                                    infowindow.open(map, marker);
+                                } else {
+                                    window.alert('No results found');
+                                }
+                            } else {
+                                window.alert('Geocoder failed due to: ' + status);
+                            }
+                        }
+                        )
+                    })
+
+                    document.getElementById("modifysearch").onclick = function () {
+                        var address2 = document.getElementById("modifyplace").value;
+                        var geocoder2 = new google.maps.Geocoder();
+                        var infowindow = new google.maps.InfoWindow;
+                        geocoder2.geocode(
+                            { 'address': document.getElementById("modifyplace").value },
+                            function (results, status) {
+                                //console.log(address2);
+                                if (status == 'OK') {
+                                    map2.setCenter(results[0].geometry.location);
+                                    if (marker2 == null) {
+                                        marker2 = new google.maps.Marker({
+                                            position: results[0].geometry.location,
+                                            map: map2,
+                                            title: "You're here!!"
+                                        });
+                                        //console.log(e.latLng.lat() + ',' + e.latLng.lng());
+                                    }
+                                    else {
+                                        marker2.setPosition(results[0].geometry.location);
+                                        //console.log(e.latLng.lat() + ',' + e.latLng.lng());
+                                    }
+                                    infowindow.setContent(results[0].formatted_address);
+                                    console.log(results[0].formatted_address);
+                                    infowindow.open(map2, marker2);
+                                } else {
+                                    alert('Geocode was not successful for the following reason: ' + status);
+                                }
+                            }
+                        )
+                    }
+                    map2.addListener("click", function (e) {
+                        map2.setCenter(e.latLng); //取得滑鼠點到的地方的經緯度
+                        if (marker2 == null) {
+                            marker2 = new google.maps.Marker({
+                                position: e.latLng,
+                                map: map,
+                                title: "You're here!!"
+                            });
+                            //console.log(e.latLng.lat() + ',' + e.latLng.lng());
+                        }
+                        else {
+                            marker2.setPosition(e.latLng);
+                            //console.log(e.latLng.lat() + ',' + e.latLng.lng());
+                        }
+
+                        var geocoder = new google.maps.Geocoder;
+                        var infowindow = new google.maps.InfoWindow;
+                        geocoder.geocode({
+                            'location': {
+                                lat: e.latLng.lat(),
+                                lng: e.latLng.lng()
+                            }
+                        }, function (results, status) {
+                            if (status === 'OK') {
+                                document.getElementById("modifyplace").value = results[0].formatted_address;
+                                document.getElementById("modifyplace").name = e.latLng.lat() + "," + e.latLng.lng();
+                                console.log(e.latLng.lat() + "," + e.latLng.lng());
+                                //console.log(e.latLng.lat() + ',' + e.latLng.lng());
+                                if (results[0]) {
+                                    map2.setZoom(11);
+                                    infowindow.setContent(results[0].formatted_address);
+                                    //console.log(results[0].formatted_address);
+                                    infowindow.open(map, marker);
+                                } else {
+                                    window.alert('No results found');
+                                }
+                            } else {
+                                window.alert('Geocoder failed due to: ' + status);
+                            }
+
+                        }
+                        )
+                    })
+                }
+
+
+            </script>
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+
+</body>
+
+</html>

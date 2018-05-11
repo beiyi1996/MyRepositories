@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>my_calendar</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div style="height:100px; border-top: 4px solid rgb(255,174,147);" class="row mt-2">
+            <div class="col-1 mt-4">
+                <i class="fas fa-chevron-circle-left fa-2x" style="color:rgb(255, 174, 147);" id="left"></i>
+            </div>
+            <div class="col text-center">
+                <div class="row mt-3">
+                    <div class="col" id="month">
+
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col" id="year">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-1 mt-4">
+                <i class="fas fa-chevron-circle-right fa-2x" style="color:rgb(255, 174, 147);" id="right"></i>
+            </div>
+        </div>
+        <table style="font-family:monospace;" class="table text-center" id="table">
+            <tr>
+                <td>sun</td>
+                <td>mon</td>
+                <td>tue</td>
+                <td>wed</td>
+                <td>thu</td>
+                <td>fri</td>
+                <td>sat</td>
+            </tr>
+        </table>
+        <table style="font-family:monospace;" class="table table-bordered text-center" id="table2">
+        </table>
+    </div>
+
+    <script>
+        var thismonth_firstday = new Date();
+        var thismonth = new Date(thismonth_firstday.getFullYear(), thismonth_firstday.getMonth(), thismonth_firstday.getDate()); //取得這個月的月份
+        var table2 = document.querySelector("#table2");
+        console.log(thismonth + "記錄這個月");
+        console.log(thismonth_firstday + "表格的第一格，會一直改變");
+        createcalender();
+        function createcalender() {
+            document.getElementById("table2").innerHTML = "";
+            thismonth_firstday = new Date(thismonth.getFullYear(), thismonth.getMonth());
+            thismonth_firstday.setDate(1); //設定當月的 1號
+            while (thismonth_firstday.getDay() != 0) {
+                thismonth_firstday.setDate(thismonth_firstday.getDate() - 1);
+            }
+            for (var i = 1; i <= 6; i++) {
+                var tr = document.createElement("tr");
+                for (var j = 1; j <= 7; j++) {
+                    var td = document.createElement("td");
+                    if (thismonth.getMonth() == thismonth_firstday.getMonth()) { //比較thismonth的月份跟thismonth_firstday的月份是否一樣
+                        console.log(thismonth.getMonth(), thismonth_firstday.getMonth());
+                    }
+                    else {
+                        td.style = "color:lightgray";
+                    }
+                    td.innerText = thismonth_firstday.getDate();
+                    tr.appendChild(td);
+                    thismonth_firstday.setDate(thismonth_firstday.getDate() + 1);
+                    table2.appendChild(tr);
+                }
+            }
+            document.getElementById("month").innerHTML = thismonth.getMonth() + 1; //因為是從0開始計算，所以要加1才會變成1~12月
+            document.getElementById("year").innerHTML = thismonth.getFullYear();
+        }
+
+        document.getElementById("left").onclick = function () {
+            thismonth.setMonth(thismonth.getMonth() - 1);
+            createcalender();
+        }
+
+        document.getElementById("right").onclick = function () {
+            thismonth.setMonth(thismonth.getMonth() + 1);
+            createcalender();
+        }
+    </script>
+</body>
+
+</html>
