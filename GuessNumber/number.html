@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>number</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row text-center mt-5" style="font-family:monospace;">
+            <div class="col" style="margin-right:-250px;">
+            </div>
+            <div class="col">
+                <div style="text-align:left;">
+                    <span style="font-size:17px;">Input</span>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="" id="input" class="form-control" style="width:300px;" placeholder="" aria-describedby="helpId">
+                </div>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col" style="margin-right:-250px;">
+                <button type="button" class="btn btn-warning" style="width:80px;" id="play">Play</button>
+                <p></p>
+                <button type="button" class="btn btn-success" id="answer">Answer</button>
+                <p></p>
+                <button type="button" class="btn btn-danger" style="width:80px" id="check">Check</button>
+                <p></p>
+                <button type="button" class="btn btn-primary" style="width:80px;" id="reset">Reset</button>
+            </div>
+            <div class="col">
+                <div style="text-align:left;">
+                    <span>Process</span>
+                </div>
+                <ul class="list-group" style="width:300px;" id="process">
+
+                </ul>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-5">
+            </div>
+            <div class="col text-center">
+                <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group btn-group-lg mt-3" role="group" aria-label="First group">
+                        <button type="button" class="btn btn-info" id="pass">PASS</button>
+                        <button type="button" class="btn btn-info" id="fail">FAIL</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var randomnumber = "";
+            var createanswer = function () {
+                for (var i = 0; i < 4;) {
+                    var number = Math.floor(Math.random() * 10);
+                    if (!randomnumber.includes(number)) {
+                        randomnumber += number;
+                        i++;
+                    }
+                }
+            }
+            document.getElementById("play").onclick = function () {
+                createanswer();
+            }
+            document.getElementById("answer").onclick = function () {
+                alert("答案是：" + randomnumber);
+            }
+            var limit = 5;
+            var checkanswer = function () {
+                var input = document.getElementById("input").value;
+                console.log(input);
+                var a = 0;
+                var b = 0;
+                for (var j = 0; j < 4; j++) {
+                    if (randomnumber.includes(input[j])) {
+                        if (randomnumber[j] == input[j]) {
+                            a++;
+                        }
+                        else {
+                            b++;
+                        }
+                    }
+                }
+                limit--;
+                var li = document.createElement("li");
+                li.innerHTML = input;
+                li.className = "list-group-item text-left";
+                var pill = document.createElement("div");
+                pill.innerText = a + "A" + b + "B";
+                pill.className = "badge badge-warning badge-pill float-right";
+                document.getElementById("process").appendChild(li).appendChild(pill);
+                if (a == 4) {
+                    document.getElementById("fail").disabled = true;
+                }
+                else if (limit == 0) {
+                    document.getElementById("pass").disabled = true;
+                }
+                document.getElementById("input").value = "";
+            }
+            document.getElementById("check").onclick = function () {
+                checkanswer();
+            }
+            document.getElementById("reset").onclick = function () {
+                randomnumber = "";
+                createanswer();
+                document.getElementById("input").value = "";
+                document.getElementById("process").innerHTML = "";
+                document.getElementById("play").disabled = true;
+            }
+        </script>
+</body>
+
+</html>
