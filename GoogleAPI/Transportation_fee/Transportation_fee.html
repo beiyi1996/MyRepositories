@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Transportation Fee</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+        .Map {
+            height: 600px;
+            width: 700px;
+        }
+
+        .Records {
+            height: 600px;
+            width: 200px;
+        }
+
+        .Fee {
+            height: 600px;
+            width: 700px;
+        }
+    </style>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container-fluid" style="font-family:Microsoft JhengHei;">
+        <div class="row">
+            <div class="col Map" id="map">
+            </div>
+            <div class="col Records">
+                <div class="row">
+                    <div class="col" id="records">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" id="records2">
+                    </div>
+                </div>
+            </div>
+            <div class="col Fee" id="fees">
+                <div class="row mt-3">
+                    <div class="col border-bottom" id="car">
+                        <h6>自行開車</h6>
+                        <p>總時數：
+                            <span id="carhour"></span>
+                        </p>
+                        <p>總公里數：
+                            <span id="carkm"></span>
+                        </p>
+                        <p>總費用：
+                                <span id="carfees"></span>&nbsp;元
+                        </p>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col border-bottom" id="taxi">
+                        <h6>搭計程車</h6>
+                        <p>總時數：
+                            <span id="taxihour"></span>
+                        </p>
+                        <p>總公里數：
+                            <span id="taxikm"></span>
+                        </p>
+                        <p>總費用：
+                            
+                                <span id="taxifees"></span>&nbsp;元
+                        </p>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col" id="bus">
+                        <h6>大眾運輸</h6>
+                        <p>總時數：
+                            <span id="bushour"></span>
+                        </p>
+                        <p>總公里數：
+                            <span id="buskm"></span>
+                        </p>
+                        <p>總費用：
+                        
+                                <span id="busfees"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5uU7vA18bFARvxikEdXWaj2820d6MoXQ"></script>
+    <script type="text/JavaScript">
+    var map;
+    var center = {lat: 24.7571075, lng:120.952429};
+    var point1 = null, point2 = null;
+    var Service = null;
+    var Display = null;
+    var km = 0;
+    var highway = 0;
+    var normalway = 0;
+    var total = 0;
+    window.onload = function () {
+        map = new google.maps.Map(
+            document.getElementById("map"),{
+                center : center,
+                zoom: 15
+            });
+        Service = new google.maps.DirectionsService(); //物件計算使用各種運輸方法的路線規劃
+        Display = new google.maps.DirectionsRenderer(); //顯示折線和任何關聯的標記
+        Display.setMap(map);
+        Display.setPanel(document.getElementById('records'));
+        Service2 = new google.maps.DirectionsService(); //物件計算使用各種運輸方法的路線規劃
+        Display2 = new google.maps.DirectionsRenderer(); //顯示折線和任何關聯的標記
+        Display2.setMap(map);
+        Display2.setPanel(document.getElementById('records2'));
+        map.addListener("click",function(e){
+          if(point1 != null && point2 != null){
+              point1 = null;
+              point2 = null;
+          }
+          if(point1 == null){
+              point1 = e.latLng.lat() + "," + e.latLng.lng();
+              return;
+          }
+          if(point2 == null){
+              point2 = e.latLng.lat() + "," + e.latLng.lng();
+          }
+          if(point1 != null && point2 != null){
+              Service.route({
+                  origin:point1,
+                  destination:point2,
+                  travelMode:'DRIVING'
+              },function(response, status){
+                  if(status === 'OK'){
+                      Display.setDirections(response);
+                      //console.log(response);
+                  }
+                  else{
+                      console.log("error" + status);
+                  }
+                  for(var reitem of response.routes){
+                     for(var leitem of reitem.legs){
+                        var text = leitem.distance.text;
+                        km = text.split(" ")[0];
+                        //console.log(km);
+                        //console.log(text);
+                        var time = leitem.duration.text;
+                        document.getElementById("carkm").innerHTML = text;
+                        document.getElementById("carhour").innerHTML = time;
+                        document.getElementById("taxikm").innerHTML = text;
+                        document.getElementById("taxihour").innerHTML = time; 
+                         for(var stitem of leitem.steps){
+                             if(stitem.instructions.includes("收費路段")){
+                                 highway += parseFloat((stitem.distance.text.split(" ")[0]))*1.2;
+                                 //console.log(highway);
+                                 normalway += km * 5;
+                                 total = highway + normalway;
+                                 document.getElementById("carfees").innerHTML = Math.floor(total);
+                             }
+                             else{
+                                normalway += km * 5;
+                                document.getElementById("carfees").innerHTML = Math.floor(normalway);
+                             }
+                             //console.log(Math.floor(normalway));
+                             //console.log(stitem.instructions);
+                             if(km<1.5){
+                                //console.log(km);
+                                normalway = 85;
+                                document.getElementById("taxifees").innerHTML = Math.floor(normalway);
+                             }
+                             else{
+                                normalway = Math.floor((km - 1.5) / 0.25 * 5)+85;
+                                document.getElementById("taxifees").innerHTML = normalway;
+                             }
+                         }
+                     }
+                  }
+              });
+          }
+
+           if(point1 != null && point2 != null){
+            Service2.route({
+                  origin:point1,
+                  destination:point2,
+                  travelMode:'TRANSIT',
+                  },function(response,status){
+                      if(status === 'OK'){
+                          Display2.setDirections(response);
+                          console.log(response);
+                      }
+                      else{
+                          console.log("error" + status);
+                      }
+                      for(var roitem2 of response.routes){
+                          if(roitem2.fare != null){
+                              document.getElementById("busfees").innerHTML = roitem2.fare.value + '&nbsp' +"元";
+                          }
+                          else{
+                              document.getElementById("busfees").innerHTML = "查無票價";
+                          }
+                          for(var leitem2 of roitem2.legs){
+                              var text = leitem2.distance.text;
+                              var time = leitem2.duration.text;
+                              document.getElementById("buskm").innerHTML = text;
+                              document.getElementById("bushour").innerHTML = time;
+                              km = text.split(" ")[0];
+                              console.log(km);
+                              //console.log(time);
+                              //console.log(text);
+                          }
+                      }
+                  })
+              }
+        });
+    }
+
+      
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
