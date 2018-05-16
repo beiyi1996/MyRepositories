@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Trello</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body style="font-family:Microsoft JhengHei">
+    <div class="card" style="width:300px;">
+        <div class="card-body">
+            <p class="card-text">這是可愛的Bootstrap練習作業，請同學要完成喲！鳩咪 &#94;&#46;&#60;</p>
+        </div>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modelId">
+            新增一張卡片
+        </button>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="modelId" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modelTitleId">&#35;1012</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav justify-content-center|justify-content-end">
+                        <li class="nav-item">
+                            <h6 class="nav-link">位於文件列表</h6>
+                        </li>
+                        <li class="nav-item">
+                            <h6>
+                                <a class="nav-link" href="#">練習中/作業中</a>
+                            </h6>
+                        </li>
+                    </ul>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="row">
+                                    <div class="col">
+                                        <p>成員</p>
+                                        <img src='http://fakeimg.pl/30x30?font=lobster' alt='' class="rounded-circle" />
+                                        <button type="button" class="btn btn-sm">+</button>
+                                    </div>
+                                    <div class="col">
+                                        <p>標籤</p>
+                                        <button type="button" class="btn btn-success btn-sm">C#</button>
+                                        <button type="button" class="btn btn-warning btn-sm">CSS</button>
+                                        <button type="button" class="btn btn-sm">+</button>
+                                    </div>
+                                    <div class="col">
+                                        <p>到期日</p>
+                                        <button type="button" class="btn btn-success" >
+                                            <u><i class="far fa-check-square"></i> 3月15日晚上9點00分</u>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for=""><i class="fas fa-align-left"></i> 描述</label>
+                                            <input type="text" class="form-control" style="height: 100px;" name="" id="" aria-describedby="helpId" placeholder="">
+                                            <p>
+                                                <button type="button" class="btn btn-success mt-2">儲存</button>
+                                            </p>
+                                        </div>
+                                        <h6><i class="fas fa-paperclip" style="color:gray;"></i> 附件</h6>
+                                        <div style="width:545px; height:80px; border:2px solid lightgray; border-style: dashed;" class="mb-3">
+                                            <p class="mt-4" style="color:gray; text-align:center;">請拖曳或
+                                                <a href="#" style="color:gray; text-decoration: underline;">選擇檔案</a>
+                                            </p>
+                                        </div>
+                                        <h6><i class="far fa-comment"></i> 新增評論</h6>
+                                        <div style="width:545px; height:80px; border:1px solid gray;">
+                                            <div style="padding-left:10px;">
+                                                <p style="color:lightgray;">撰寫評論</p>
+                                            </div>
+                                            <div style="float:right ">
+                                                <div class="btn-group" role="group" aria-label="First group">
+                                                    <button style="padding-right:5px;padding-left:5px;" type="button" class="btn btn-link">
+                                                        <i class="fas fa-paperclip" style="color:lightgrey"></i>
+                                                    </button>
+                                                    <button style="padding-right:5px;padding-left:5px;" type="button" class="btn btn-link">
+                                                        <i class="fas fa-at" style="color:lightgrey;"></i>
+                                                    </button>
+                                                    <button style="padding-right:5px;padding-left:5px;" type="button" class="btn btn-link">
+                                                        <i class="far fa-smile" style="color: lightgrey;"></i>
+                                                    </button>
+                                                    <button style="padding-right:5px;padding-left:5px;" type="button" class="btn btn-link">
+                                                        <i class="far fa-credit-card" style="color: lightgrey;"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>
+                                            <button type="button" class="btn mt-2" disabled>儲存</button>
+                                        </p>
+                                        <div>
+                                            <h6><i class="fas fa-list-ul"></i> 活動
+                                                <a href="" style="color:gray; float:right;">
+                                                    <u>顯示詳情</u>
+                                                </a>
+                                            </h6>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <img src='http://fakeimg.pl/30x30?font=lobster' class="rounded-circle" alt='' />
+                                                    <span>&nbsp;&nbsp;黃汶鈞</span>
+                                                    <span style="font-size: 12px; color:gray; ">3月3日晚上20點30分</span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-10 offset-1" style="border:1px solid gray; height:100px; font-size:12px; ">
+                                                    1. Cillum Lorem id anim minim.
+                                                    <br/> 2. In irure incididunt anim elit magna ea.
+                                                    <br/> 3. Veniam irure enim nostrud cupidatat labore culpa nulla sint dolor.
+                                                    <br/> 4. Do in sunt id eu qui sunt.
+                                                    <br/> 5. Exercitation aute dolore velit laboris nostrud pariatur amet nisi.
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-11 mt-2 offset-1">
+                                                    <i class="far fa-smile" style="color: lightslategray;"></i>
+                                                    <span> -
+                                                        <a href="#" style="font-size: 11px;">
+                                                            <u>編輯</u>
+                                                        </a> -
+                                                        <a href="#" style="font-size: 11px;">
+                                                            <u>刪除</u>
+                                                        </a>
+                                                    </span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <h6 class="mb-1">新增</h6>
+                                <button type="button" name="" id="" class="btn btn-block text-left"><i class="far fa-user" style="color:gray; font-size: 13px;"></i> 成員</button>
+                                <button type="button" name="" id="" class="btn btn-block text-left"><i class="fas fa-tag" style="color:gray; font-size: 13px;"></i> 標籤</button>
+                                <button type="button" name="" id="" class="btn btn-block text-left"><i class="far fa-check-square" style="color:gray; font-size: 13px;"></i> 待辦清單</button>
+                                <button type="button" name="" id="" class="btn btn-block text-left"><i class="far fa-clock" style="color:gray; font-size: 13px;"></i> 到期日</button>
+                                <button type="button" name="" id="" class="btn btn-block text-left"><i class="fas fa-paperclip" style="color:gray;"></i> 附件</button>
+                                <h6 class="mt-3 mb-1">強化功能</h6>
+                                <button type="button" name="" id="" class="btn btn-block text-left"><i class="fab fa-google-drive" style="color:gray; font-size: 13px;"></i> Google 雲端硬碟</button>
+                                <h6 class="mt-3 mb-1">動作</h6>
+                                <button type="button" name="" id="" class="btn btn-block text-left"><i class="fas fa-arrow-right" style="color:gray; font-size: 13px;"></i> 移動</button>
+                                <button type="button" name="" id="" class="btn btn-block text-left"><i class="far fa-credit-card" style="color: gray; font-size: 13px;"></i> 複製</button>
+                                <button type="button" name="" id="" class="btn btn-block text-left"><i class="far fa-eye" style="color: gray; font-size: 13px;"></i> 立即觀看</button>
+                                <button type="button" name="" id="" class="btn btn-block text-left"><i class="far fa-save" style="color: gray; font-size: 13px;"></i> 封存</button>
+                                <h6 class="mt-2"></h6>
+                                <button type="button" name="" id="" class="btn btn-link btn-block text-left mt-4">
+                                    <a href="" style="color:gray"><u>分享及其他...</u></a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
