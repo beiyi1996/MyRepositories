@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Slot</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <style>
+    img {
+      border: 10px solid transparent !important ;
+      height:70px;
+      width:70px;
+      border-radius: 50%;
+    }
+
+    span{
+      text-align: center;
+      font-size: 60px;
+      font-family: Microsoft JhengHei;
+      color:lightcoral;
+    }
+
+    .imgs {
+      border-radius: 50%;
+      border: 10px solid orange !important;
+      box-sizing: border-box;
+      box-shadow: orange;
+    }
+
+    .clear {
+      border-radius: 50%;
+      transition: all 1s;
+    }
+  </style>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row mt-5 text-center">
+      <div class="col-2">
+        <img src='../slot/picture/emoji1.jpg' id="i1" alt='' />
+      </div>
+      <div class="col-2">
+        <img src='../slot/picture/emoji2.jpg' id="i2" alt='' />
+      </div>
+      <div class="col-2">
+        <img src='../slot/picture/emoji3.jpg' id="i3" alt='' />
+      </div>
+      <div class="col-2">
+        <img src='../slot/picture/emoji4.jpg' id="i4" alt='' />
+      </div>
+      <div class="col-2">
+        <img src='../slot/picture/emoji5.jpg' id="i5" alt='' />
+      </div>
+      <div class="col-2">
+        <img src='../slot/picture/emoji6.jpg' id="i6" alt='' />
+      </div>
+    </div>
+    <div class="row mt-5 text-center">
+      <div class="col-2">
+        <img src='../slot/picture/emoji4.jpg' id="i16" alt='' />
+      </div>
+      <div class="col-8">
+          <span>今天心情...</span>
+      </div>
+      <div class="col-2">
+        <img src='../slot/picture/emoji1.jpg' id="i7" alt='' />
+      </div>
+    </div>
+    <div class="row mt-5 text-center">
+      <div class="col-2">
+        <img src='../slot/picture/emoji3.jpg' id="i15" alt='' />
+      </div>
+      <div class="col-2">
+      </div>
+      <div class="col-2">
+      </div>
+      <div class="col-2">
+
+      </div>
+      <div class="col-2">
+
+      </div>
+      <div class="col-2">
+        <img src='../slot/picture/emoji2.jpg' id="i8" alt='' />
+      </div>
+    </div>
+    <div class="row mt-5 text-center">
+      <div class="col-2">
+        <img src='../slot/picture/emoji2.jpg' id="i14" alt='' />
+      </div>
+      <div class="col-2">
+        <img src='../slot/picture/emoji1.jpg' id="i13" alt='' />
+      </div>
+      <div class="col-2">
+        <img src='../slot/picture/emoji6.jpg' id="i12" alt='' />
+      </div>
+      <div class="col-2">
+        <img src='../slot/picture/emoji5.jpg' id="i11" alt='' />
+      </div>
+      <div class="col-2">
+        <img src='../slot/picture/emoji4.jpg' id="i10" alt='' />
+      </div>
+      <div class="col-2">
+        <img src='../slot/picture/emoji3.jpg' id="i9" alt='' />
+      </div>
+    </div>
+    <div class="row mt-5">
+      <div class="col">
+        <button type="button" name="" id="start" class="btn btn-info btn-lg btn-block">
+          START
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script>
+    var bricks = [];
+    var brick;
+    var count = 0;
+    var times = 0; //跑幾步
+    for (var i = 1; i <= 16; i++) {
+      brick = document.getElementById("i" + i);
+      if (brick) {
+        bricks.push(brick);
+      }
+    }
+    console.log(bricks);
+
+    count = Math.floor(Math.random() * bricks.length); //從哪個地方開始
+    document.getElementById("start").onclick = function () {
+      times = 30;
+      bricks[count].className = "imgs";
+      start();
+    }
+    function start() {
+      bricks[count].className = "clear";
+      count++;
+      if (count > bricks.length - 1) {
+        count = 0;
+      }
+      bricks[count].className = "imgs";
+      if (times > 0) {
+        times--;
+        setTimeout(start, 100);
+      }
+    }
+  </script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
