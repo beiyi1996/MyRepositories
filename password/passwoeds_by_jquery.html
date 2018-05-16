@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>passwords-jquery</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container mt-5" style="font-family:Microsoft JhengHei;">
+    <div class="row ">
+      <div class="col mb-4 text-center">
+        <span style="color:coral; font-size: 20px;"><i class="fas fa-unlock-alt"></i>&nbsp;終極密碼</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col text-right" id="min">
+      </div>
+      <div class="col text-center">
+        <span>到</span>
+      </div>
+      <div class="col" id="max">
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col text-center" id="input">
+      </div>
+    </div>
+    <div class="row mt-4 text-center">
+      <div class="col">
+        <span>答題次數：&nbsp;&nbsp;
+          <span id="answertime"></span>次</span>
+        <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;剩餘答題次數：&nbsp;&nbsp;
+          <span id="lasttime"></span>次</span>
+      </div>
+    </div>
+    <div class="row text-center mt-5" style="font-family:monospace;">
+      <div class="col">
+        <p>
+          <button type="button" class="btn btn-light rounded-circle" style="width:40px;height:40px;" id="1" value="1">1</button>
+          <button type="button" class="btn btn-light rounded-circle" style="width:40px;height:40px;" id="2" value="2">2</button>
+          <button type="button" class="btn btn-light rounded-circle" style="width:40px;height:40px;" id="3" value="3">3</button>
+        </p>
+        <p>
+          <button type="button" class="btn btn-light rounded-circle" style="width:40px;height:40px;" id="4" value="4">4</button>
+          <button type="button" class="btn btn-light rounded-circle" style="width:40px;height:40px;" id="5" value="5">5</button>
+          <button type="button" class="btn btn-light rounded-circle" style="width:40px;height:40px;" id="6" value="6">6</button>
+        </p>
+        <p>
+          <button type="button" class="btn btn-light rounded-circle" style="width:40px;height:40px;" id="7" value="7">7</button>
+          <button type="button" class="btn btn-light rounded-circle" style="width:40px;height:40px;" id="8" value="8">8</button>
+          <button type="button" class="btn btn-light rounded-circle" style="width:40px;height:40px;" id="9" value="9">9</button>
+        </p>
+        <button type="clear" class="btn btn-link rounded-circle" style="width:40px;height:40px; color:black;" id="x">x</button>
+        <button type="button" class="btn btn-light rounded-circle" style="width:40px;height:40px;" id="0" value="0">0</button>
+        <button type="go" class="btn btn-light rounded-circle" style="width:40px;height:40px;" id="go">go</button>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+      $(function () {
+        var key = Math.floor(Math.random() * 100);
+        var min = 0;
+        var max = 100;
+        var times = 0;
+        var settimes = 5;
+        console.log(key);
+        var val = "";
+        $('#answertime').text(times);
+        $('#lasttime').text(settimes);
+        $(':button').each(function () {
+          console.log($(':button'));
+          $(this).click(function () {
+            val += $(this).val();
+            console.log(val);
+            $('#input').text(val);
+          });
+        });
+
+        $('#x').on('click', function () {
+          location.reload();
+        });
+
+        $('#go').on('click', function () {
+          role();
+          endgame();
+          val = "";
+          $('#input').text(val);
+        });
+
+        var role = function () {
+          var _input = $('#input').text();
+          console.log(_input);
+          if (_input > key && _input < max) {
+            console.log("!");
+            max = _input;
+            times++;
+            settimes--;
+          }
+          else if (_input < key && _input > min) {
+            console.log("!!");
+            min = _input;
+            times++;
+            settimes--;
+          }
+          else if (_input == key) {
+            console.log("!!!");
+            alert('You are win!! The password is ' + key);
+          }
+
+          $('#min').text(min);
+          $('#max').text(max);
+          $('#answertime').text(times);
+          $('#lasttime').text(settimes);
+        };
+
+        var endgame = function () {
+          if (settimes == 0) {
+            alert("You're lose!");
+            $('#go').attr('disabled',true);
+          }
+        };
+      })
+
+    </script>
+</body>
+
+</html>
