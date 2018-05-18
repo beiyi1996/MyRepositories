@@ -22,13 +22,13 @@
 
 ## 4. 猜數字  
 > + 使用技術 : Javascript API , Bootstrap , Google Maps Direction API  
-> + 目的 : 使用者任意點選地圖上的兩點，計算出兩點的時間、距離及費。
+> + 目的 : 產生一組不重複的 4 位數，使用者可以輸入猜測數字並產生對答狀態。
 
 ![1A2B](https://github.com/beiyi1996/MyRepositories_FrontEnd/blob/master/Picture/%E7%8C%9C%E6%95%B8%E5%AD%97.png)
 
 
 ## 5. Build School首頁刻板  
-> + 使用技術 : Javascript API , Bootstrap , Google Maps Direction API  
-> + 目的 : 使用者任意點選地圖上的兩點，計算出兩點的時間、距離及費。
+> + 使用技術 : HTML5 , CSS3 , Bootstrap  
+> + 目的 : 練習套用 CSS3 , Boorstrap 特效。
 
 ![Build School](https://github.com/beiyi1996/MyRepositories_FrontEnd/blob/master/Picture/buildschool.png)
