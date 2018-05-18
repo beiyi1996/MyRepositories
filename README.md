@@ -38,4 +38,4 @@
 > + 使用技術 : HTML5 , CSS3 , Bootstrap  
 > + 目的 : 練習套用 CSS3 , Boorstrap 特效。
 
-![Trello](https://github.com/beiyi1996/MyRepositories_FrontEnd/blob/master/Picture/buildschool.png)
+![Trello](https://github.com/beiyi1996/MyRepositories_FrontEnd/blob/master/Picture/trello.png)
