@@ -27,15 +27,15 @@
 ![1A2B](https://github.com/beiyi1996/MyRepositories_FrontEnd/blob/master/Picture/%E7%8C%9C%E6%95%B8%E5%AD%97.png)
 
 
-## 5. Build School首頁刻板  
-> + 使用技術 : HTML5 , CSS3 , Bootstrap  
-> + 目的 : 練習套用 CSS3 , Boorstrap 特效。
-
-![Build School](https://github.com/beiyi1996/MyRepositories_FrontEnd/blob/master/Picture/buildschool.png)
-
-
-## 6. Trello 刻板 
+## 5. Trello 刻板 
 > + 使用技術 : HTML5 , CSS3 , Bootstrap  
 > + 目的 : 練習套用 CSS3 , Boorstrap 特效。
 
 ![Trello](https://github.com/beiyi1996/MyRepositories_FrontEnd/blob/master/Picture/trello.png)
+
+
+## 6. Build School首頁刻板  
+> + 使用技術 : HTML5 , CSS3 , Bootstrap  
+> + 目的 : 練習套用 CSS3 , Boorstrap 特效。
+
+![Build School](https://github.com/beiyi1996/MyRepositories_FrontEnd/blob/master/Picture/buildschool.png)
