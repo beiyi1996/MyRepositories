@@ -10,4 +10,11 @@
 > + 使用技術 : Javascript API , Bootstrap , Google Maps Direction API  
 > + 目的 : 使用者任意點選地圖上的兩點，計算出兩點的時間、距離及費用。  
 
-![Transportation fees](https://github.com/beiyi1996/MyRepositories_FrontEnd/blob/master/Picture/%E9%81%8A%E7%A8%8B%E8%A6%8F%E5%8A%83.png)
+![Tour planning](https://github.com/beiyi1996/MyRepositories_FrontEnd/blob/master/Picture/%E9%81%8A%E7%A8%8B%E8%A6%8F%E5%8A%83.png)  
+
+
+## 3. 計算交通費用  
+> + 使用技術 : Javascript API , Bootstrap , Google Maps Direction API  
+> + 目的 : 使用者任意點選地圖上的兩點，計算出兩點的時間、距離及費用。  
+
+![Transportation fees](https://github.com/beiyi1996/MyRepositories_FrontEnd/blob/master/Picture/GoogleAPI%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.png)
