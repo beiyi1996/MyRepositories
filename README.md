@@ -32,3 +32,10 @@
 > + 目的 : 練習套用 CSS3 , Boorstrap 特效。
 
 ![Build School](https://github.com/beiyi1996/MyRepositories_FrontEnd/blob/master/Picture/buildschool.png)
+
+
+## 6. Trello 刻板 
+> + 使用技術 : HTML5 , CSS3 , Bootstrap  
+> + 目的 : 練習套用 CSS3 , Boorstrap 特效。
+
+![Trello](https://github.com/beiyi1996/MyRepositories_FrontEnd/blob/master/Picture/buildschool.png)
