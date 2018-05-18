@@ -6,11 +6,15 @@
 ![Schedule](https://github.com/beiyi1996/MyRepositories_FrontEnd/blob/master/Picture/%E8%A1%8C%E4%BA%8B%E6%9B%86.png)  
 
 
+
+
 ## 2. 行程規劃  
 > + 使用技術 : Javascript API , Bootstrap , Google Maps Direction API  
 > + 目的 : 使用者任意點選地圖上的兩點，計算出兩點的時間、距離及費用。  
 
 ![Tour planning](https://github.com/beiyi1996/MyRepositories_FrontEnd/blob/master/Picture/%E9%81%8A%E7%A8%8B%E8%A6%8F%E5%8A%83.png)  
+
+
 
 
 ## 3. 計算交通費用  
