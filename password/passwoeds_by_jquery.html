@@ -23,7 +23,7 @@
     <div class="row">
       <div class="col text-right" id="min">
       </div>
-      <div class="col text-center">
+      <div class="col-1 text-center">
         <span>到</span>
       </div>
       <div class="col" id="max">
@@ -74,6 +74,7 @@
         var settimes = 5;
         console.log(key);
         var val = "";
+        var win = "You are Win!!";
         $('#answertime').text(times);
         $('#lasttime').text(settimes);
         $(':button').each(function () {
@@ -100,19 +101,17 @@
           var _input = $('#input').text();
           console.log(_input);
           if (_input > key && _input < max) {
-            console.log("!");
             max = _input;
             times++;
             settimes--;
           }
           else if (_input < key && _input > min) {
-            console.log("!!");
             min = _input;
             times++;
             settimes--;
           }
           else if (_input == key) {
-            console.log("!!!");
+            $("#input").val(win);
             alert('You are win!! The password is ' + key);
           }
 
@@ -124,7 +123,7 @@
 
         var endgame = function () {
           if (settimes == 0) {
-            alert("You are lose!");
+            alert("You're lose!");
             $('#go').attr('disabled',true);
           }
         };
