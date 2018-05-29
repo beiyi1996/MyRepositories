@@ -23,6 +23,7 @@
         crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/main.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" />
+    <script src="js/slide.js"></script>
 </head>
 
 <body>
@@ -61,14 +62,12 @@
             <div class="col">
                 <span class="inner" style="font-size: 20px;">
                     <h2 style="color: #D07C7C;">About Me</h2>
-                    喜歡接觸新鮮事物，
-                    <br/>對於每一件事都充滿熱忱，以要求完美為原則並付諸行動。
-                    <br/> 樂觀積極的面對問題，
-                    <br/>反省自己的錯誤後時時警惕自己，成為更好的人。
-                    <br/>全心投入程式課程，
-                    <br/>經歷6個月的Build School跨域黑客密集訓練。
-                    <br/>勇於挑戰，喜歡嘗試新鮮事物。
+                    喜歡接觸新鮮事物，毅然決然地參加Build School，
+                    <br/>全心投入程式課程，經歷6個月的密集訓練。
+                    <br/>對於每一件事都充滿熱忱，不論是後端的C#或前端的HTML , CSS等，
                     <br/>即使沒有寫過程式，還是努力學習並完成課程。
+                    <br/>當我遇到問題時，我會選擇先上網找答案，
+                    <br/>因為自己完成除錯很有成就感!!
                     <br/>
                 </span>
             </div>
@@ -272,18 +271,6 @@
     <script type="text/javascript">
         $(function () {
             $(' #da-thumbs > li ').each(function () { $(this).hoverdir(); });
-            $('#navcontact').click(function () {
-                $('html,body').animate({ scrollTop: $('#contact').offset().top }, 1000);
-            });
-            $('#navportfolio').click(function () {
-                $('html,body').animate({ scrollTop: $('#portfolio').offset().top }, 1000);
-            });
-            $('#navabout').click(function () {
-                $('html,body').animate({ scrollTop: $('#about').offset().top }, 1000);
-            });
-            $('#navhome').click(function () {
-                $('html,body').animate({ scrollTop: $('#home').offset().top }, 1000);
-            });
         });
 
     </script>
