@@ -76,3 +76,8 @@ li > a > img{
   padding:0px 0px 30px 300px;
   background-color: rgba(120, 217, 236, 0.233);
 }
+
+section{
+  background-color: #F8F7F5;
+  height: 860px;
+}
