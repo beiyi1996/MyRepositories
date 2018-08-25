@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue-TodoList</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Todo List</h2>
+        <div class="app">
+            <input type="text" placeholder="add a task" v-on:keyup.enter="addTodo(newtodo)" v-model="newtodo">
+            <div class="todos">
+                <ul v-show="isAllShow">
+                    <li v-for="todo in todos">
+                        <div class="title">
+                            <input type="checkbox" :disabled="todo.complated" v-model="todo.complated" @change="complatedTodo(todo)">
+                            <label>{{todo.title}}</label>
+                        </div>
+                        <div class="delete" v-on:click="removeTodo(todo)"></div>
+                    </li>
+                </ul>
+                <ul v-show="isActiveShow">
+                    <li v-for="todo in todos" v-if="todo.complated == false">
+                        <div class="title">
+                            <input type="checkbox" :disabled="todo.complated" v-model="todo.complated" @change="complatedTodo(todo)">
+                            <label>{{todo.title}}</label>
+                        </div>
+                        <div class="delete" v-on:click="removeTodo(todo)"></div>
+                    </li>
+                </ul>
+                <ul v-show="isComplatedShow">
+                    <li v-for="complatedtodo in complatedtodos">
+                        <div class="title">
+                            <label>{{complatedtodo.title}}</label>
+                        </div>
+                        <div class="delete" v-on:click="removeTodo(todo)"></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="buttons">
+                <button @click="isAllShow = true,isActiveShow = false,isComplatedShow = false">All</button>
+                <button @click="isActiveShow = true,isComplatedShow = false, isAllShow = false">Active</button>
+                <button v-on:click="isComplatedShow = true, isAllShow = false,isActiveShow = false">Complated</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>

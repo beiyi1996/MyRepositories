@@ -1,0 +1,105 @@
+html {
+  font-family: 'Microsoft JhengHei'; }
+
+ul {
+  padding: 0;
+  margin: 20px 70px;
+  text-align: left;
+  position: absolute; }
+  ul li {
+    list-style: none;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+    ul li:hover .delete {
+      opacity: 1; }
+      ul li:hover .delete:hover::before {
+        background: snow; }
+      ul li:hover .delete:hover::after {
+        background: snow; }
+
+label {
+  width: 120px;
+  word-wrap: break-word; }
+
+.container {
+  text-align: center; }
+
+.todos {
+  width: 300px;
+  height: 200px;
+  overflow: auto;
+  margin: 0 auto; }
+
+.title {
+  width: 150px; }
+
+.delete {
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  position: relative; }
+  .delete::before {
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background: lightgray;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg); }
+  .delete::after {
+    content: '';
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background: lightgray;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg); }
+  .delete:hover {
+    background: lightcoral; }
+
+input[type='text'] {
+  border: 1px solid lightgray;
+  height: 30px; }
+  input[type='text']:focus {
+    outline-color: lightblue;
+    outline-style: auto;
+    outline-width: 5px;
+    outline-offset: -2px; }
+
+input[type='checkbox']:checked ~ label {
+  text-decoration: line-through;
+  -webkit-text-decoration-color: gray;
+  text-decoration-color: gray;
+  color: lightgray; }
+
+.buttons {
+  position: relative; }
+
+button {
+  margin-top: 10px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  padding: 5px;
+  background: transparent;
+  color: dimgray;
+  outline: none; }
+  button:hover {
+    background: #ededed;
+    cursor: pointer; }
