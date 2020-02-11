@@ -7,8 +7,6 @@
     <meta name="description" content="Direction-Aware Hover Effect with CSS3 and jQuery" />
     <meta name="keywords" content="hover, css3, jquery, effect, direction, aware, depending, thumbnails" />
     <meta name="author" content="Codrops" />
-    <link rel="shortcut icon" href="../favicon.ico" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
     <script src="js/modernizr.custom.97074.js"></script>
     <noscript>
       <link rel="stylesheet" type="text/css" href="css/noJS.css" />
@@ -33,9 +31,12 @@
   </head>
 
   <body>
-    <div class="container-fluid" id="home">
-      <div id="fh5co-header">
-        <nav id="fh5co-main-nav">
+    <div class="container homeContainer" id="home">
+      <div class="navDiv">
+        <a href="#" class="navIcon">
+          <i class="fas fa-bars"></i>
+        </a>
+        <nav class="mainNav slideUp">
           <ul>
             <li>
               <a href="#contact">Contact</a>
@@ -72,159 +73,98 @@
           </div>
         </div>
       </div> -->
-      <div class="row skillsRow">
-        <div class="col text-center">
-          <h1>Skills</h1>
-          <middle>My Experience</middle>
-        </div>
+    </div>
+    <div class="row skillsRow">
+      <div class="col text-center">
+        <h2>Skills</h2>
+        <middle>My Experience</middle>
       </div>
     </div>
-    <div class="container-fluid skills">
+    <div class="row skills">
       <div class="row">
         <div class="col">
-          <h2>ReactJS & JQuery</h2>
+          <h4>JavaScript & JQuery</h4>
+          <middle>February 2018 - February 2020</middle>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h4>ReactJS</h4>
           <middle>September 2018 - February 2020</middle>
-          <ol>
-            <li>新增 / 修改 / 查詢 / 刪除基本語法</li>
-            <li>子查詢 / 預存程序</li>
-            <li>一般資料表運算式 (CTE) / 虛擬資料表 (VIEW)</li>
-            <li>預存程序 (Stored Procedure)</li>
-          </ol>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h4>Node.js(自學)</h4>
+          <middle>September 2019 - February 2020</middle>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h4>MongoDB(自學)</h4>
+          <middle>September 2019 - February 2020</middle>
         </div>
       </div>
     </div>
     <div class="row portfolio" id="portfolio">
       <div class="col text-center">
-        <h1>Protfolio</h1>
+        <h2>Protfolio</h2>
         <middle>Front End / Back End</middle>
       </div>
     </div>
     <section>
-      <ul id="da-thumbs" class="da-thumbs">
+      <ul id="da-thumbs" class="timeline">
         <li>
-          <a href="https://wenchun.azurewebsites.net/Calendar/Schedule.html" target="_blank">
-            <img src="../resume/images/行事曆.png" />
-            <div>
-              <span>行事曆</span>
-            </div>
-          </a>
+          <div class="timeItem">
+            <h5>11/2018 - 03/2020</h5>
+            <a href="https://activity.liontravel.com/category/zh-tw/index?fr=cg451mega" target="_blank">
+              <img src="../resume/images/liontravel_activity.jpg" />
+              <span class="itemContent">雄獅旅遊 - 票券當地遊</span>
+            </a>
+          </div>
         </li>
         <li>
-          <a href="https://wenchun.azurewebsites.net/Vue.js/vue.html" target="_blank">
-            <img src="../resume/images/vue_todolist.png" />
-            <div>
-              <span>Vue-TodoList</span>
-            </div>
-          </a>
+          <div class="timeItem">
+            <h5>12/2019 - 02/2020</h5>
+            <a href="https://wenchun.azurewebsites.net/Calendar/Schedule.html" target="_blank">
+              <img src="../resume/images/行事曆.png" />
+              <span class="itemContent">訂位系統</span>
+            </a>
+          </div>
         </li>
         <li>
-          <a href="https://wenchun.azurewebsites.net/GuessNumber/number.html" target="_blank">
-            <img src="../resume/images/猜數字.png" />
-            <div>
-              <span>1A2B</span>
-            </div>
-          </a>
+          <div class="timeItem">
+            <h5>08/2018</h5>
+            <a href="https://wenchun.azurewebsites.net/Vue.js/vue.html" target="_blank">
+              <img src="../resume/images/vue_todolist.png" />
+              <span class="itemContent">Vue - todo-list</span>
+            </a>
+          </div>
         </li>
         <li>
-          <a href="https://wenchun.azurewebsites.net/GoogleAPI/food.html" target="_blank">
-            <img src="../resume/images/遊程規劃.png" />
-            <div>
-              <span>遊程規劃</span>
-            </div>
-          </a>
+          <div class="timeItem">
+            <h5>06/2018</h5>
+            <a href="https://wenchun.azurewebsites.net/cat-slave/index.html" target="_blank">
+              <img src="../resume/images/貓奴選物.png" />
+              <span class="itemContent">貓奴選物(RED響應式網頁)</span>
+            </a>
+          </div>
         </li>
         <li>
-          <a href="https://github.com/beiyi1996/MyRepositories_RearEnd/blob/master/lifenumber/Form1.cs" target="_blank">
-            <img src="../resume/images/生命靈數.png" />
-            <div>
-              <span>生命靈數</span>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="https://wenchun.azurewebsites.net/GoogleAPI/Transportation_fee.html" target="_blank">
-            <img src="../resume/images/GoogleAPI基本操作.png" />
-            <div>
-              <span>Google API <br />基本操作</span>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="https://wenchun.azurewebsites.net/Cut_Blocks_For_WebPage/buildschool.html" target="_blank">
-            <img src="../resume/images/buildschool2-1.png" />
-            <div>
-              <span>Build School首頁 <br />刻板練習</span>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://github.com/beiyi1996/MyRepositories_RearEnd/blob/master/TicketPrice/Form1.cs"
-            target="_blank"
-          >
-            <img src="../resume/images/運輸票價.png" />
-            <div>
-              <span>運輸票價</span>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="https://wenchun.azurewebsites.net/Cut_Blocks_For_WebPage/shopee.html" target="_blank">
-            <img src="../resume/images/shopee2.png" />
-            <div>
-              <span>蝦皮Shopee 首頁 <br />刻板練習</span>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="https://wenchun.azurewebsites.net/Cut_Blocks_For_WebPage/trello.html" target="_blank">
-            <img src="../resume/images/trello.png" />
-            <div>
-              <span>Trello卡片 <br />刻板練習</span>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="https://wenchun.azurewebsites.net/Slot/slot.html" target="_blank">
-            <img src="../resume/images/小瑪莉.png" />
-            <div>
-              <span>小瑪莉</span>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="https://wenchun.azurewebsites.net/password/passwoeds_by_jquery.html" target="_blank">
-            <img src="../resume/images/終極密碼.png" />
-            <div>
-              <span>終極密碼</span>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://wenchun.azurewebsites.net/Temperature_Conversion/Temperature%20conversion.html"
-            target="_blank"
-          >
-            <img src="../resume/images/溫度轉換.png" />
-            <div>
-              <span>溫度轉換</span>
-            </div>
-          </a>
-        </li>
-        <li>
-          <a href="https://wenchun.azurewebsites.net/cat-slave/index.html" target="_blank">
-            <img src="../resume/images/貓奴選物.png" />
-            <div>
-              <span>貓奴選物(RWD響應式網頁)</span>
-            </div>
-          </a>
+          <div class="timeItem">
+            <h5>05/2018</h5>
+            <a href="https://wenchun.azurewebsites.net/Calendar/Schedule.html" target="_blank">
+              <img src="../resume/images/行事曆.png" />
+              <span class="itemContent">行事曆</span>
+            </a>
+          </div>
         </li>
       </ul>
     </section>
-    <div class="container-fluid contact" id="contact">
+    <div class="contact" id="contact">
       <div class="row">
         <div class="col text-center">
-          <h1>Get in touch</h1>
+          <h2>Get in touch</h2>
         </div>
       </div>
       <div class="row mb-3">
@@ -250,14 +190,7 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="../resume/js/jquery.hoverdir.js"></script>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-    <script type="text/javascript">
-      $(function() {
-        $(" #da-thumbs > li ").each(function() {
-          $(this).hoverdir();
-        });
-      });
-    </script>
+    <script src="js/slide.js"></script>
   </body>
 </html>
