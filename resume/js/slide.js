@@ -17,6 +17,7 @@ $(function() {
   $(".navIcon").on("click", function(event) {
     console.log("menu icon is clicked!!", $(this), $(this).find(".mainNav"));
     event.preventDefault();
+    $(this).toggleClass("active");
     $(this)
       .siblings(".mainNav")
       .toggleClass("slideDown");
