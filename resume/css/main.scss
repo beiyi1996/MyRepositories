@@ -2,6 +2,10 @@
   // outline: 1px solid orange;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-size: 17px;
   font-family: Microsoft JhengHei;
@@ -82,10 +86,15 @@ body {
     position: fixed;
     visibility: hidden;
     z-index: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
     & > ul {
       li {
         float: none;
         text-align: center;
+        opacity: 0;
+        position: relative;
 
         & > a {
           display: inline-block;
@@ -118,6 +127,17 @@ body {
     }
   }
 
+  @keyframes fadeInRight {
+    0% {
+      opacity: 0;
+      left: 20%;
+    }
+    100% {
+      opacity: 1;
+      left: 0;
+    }
+  }
+
   .slideUp {
     transform: translateY(-212px);
     transition: 0.3s ease-in-out;
@@ -127,7 +147,23 @@ body {
     transform: translateY(1px);
     transition: 0.3s ease-in-out;
     visibility: visible;
-    background-color: rgba(0, 0, 0, 0.685);
+    background-color: rgba(0, 0, 0, 0.753);
+
+    ul {
+      li {
+        animation: fadeInRight 0.3s ease-in-out forwards;
+        animation-delay: 0.35s;
+        &:nth-of-type(2) {
+          animation-delay: 0.4s;
+        }
+        &:nth-of-type(3) {
+          animation-delay: 0.45s;
+        }
+        &:nth-of-type(4) {
+          animation-delay: 0.5s;
+        }
+      }
+    }
   }
 }
 
@@ -275,7 +311,7 @@ section {
     li {
       position: relative;
       margin: 20px 0;
-      width: 50%;
+      width: auto;
       display: flex;
       text-align: center;
       justify-self: center;
@@ -367,7 +403,7 @@ section {
   }
 }
 
-@media screen and (min-width: 980px) {
+@media screen and (min-width: 1050px) {
   * {
     // outline: 1px solid green;
   }
@@ -376,8 +412,9 @@ section {
     min-height: 380px;
 
     .header {
+      width: 100%;
       transform: translate(50px, 50px);
-      margin-left: -100px;
+      margin-left: -50px;
     }
   }
 
@@ -399,6 +436,7 @@ section {
     .timeline {
       li {
         padding-top: 0;
+        width: 50%;
         &:nth-child(odd) {
           text-align: right;
           justify-content: flex-start;
