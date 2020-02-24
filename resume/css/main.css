@@ -374,6 +374,7 @@ section .timeline li {
   text-align: center;
   justify-self: center;
   padding-top: 25px;
+  opacity: 0;
 }
 
 section .timeline li::before {
@@ -456,6 +457,42 @@ section .timeline li .timeItem .itemTitle {
   color: #3d405b;
 }
 
+section .timeline li.scrollFade {
+  opacity: 1;
+  -webkit-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+}
+
+section .timeline li.scrollFade:nth-of-type(odd) {
+  -webkit-transform: translateX(0px);
+          transform: translateX(0px);
+}
+
+section .timeline li.scrollFade:nth-of-type(even) {
+  -webkit-transform: translateX(0px);
+          transform: translateX(0px);
+}
+
+section .timeline li.scrollFade:nth-of-type(2) {
+  -webkit-animation-delay: .6s;
+          animation-delay: .6s;
+}
+
+section .timeline li.scrollFade:nth-of-type(3) {
+  -webkit-animation-delay: 0.65s;
+          animation-delay: 0.65s;
+}
+
+section .timeline li.scrollFade:nth-of-type(4) {
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+}
+
+section .timeline li.scrollFade:nth-of-type(5) {
+  -webkit-animation-delay: 0.75s;
+          animation-delay: 0.75s;
+}
+
 .contact {
   background-color: #161616;
   color: #f8f7f5;
@@ -515,12 +552,16 @@ section .timeline li .timeItem .itemTitle {
     -webkit-box-pack: start;
         -ms-flex-pack: start;
             justify-content: flex-start;
+    -webkit-transform: translateX(-1000px);
+            transform: translateX(-1000px);
   }
   section .timeline li:nth-child(even) {
     text-align: left;
     -webkit-box-pack: end;
         -ms-flex-pack: end;
             justify-content: flex-end;
+    -webkit-transform: translateX(1000px);
+            transform: translateX(1000px);
   }
 }
 /*# sourceMappingURL=main.css.map */
