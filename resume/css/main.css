@@ -321,7 +321,9 @@ li img {
 }
 
 .skills .row {
-  margin: 10px 0;
+  margin: 5px 0;
+  width: 100%;
+  text-align: center;
 }
 
 .portfolio {
@@ -480,6 +482,17 @@ section .timeline li .timeItem .itemTitle {
         -ms-flex-direction: row;
             flex-direction: row;
     text-align: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  .skills .row {
+    margin: 10px 0;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    width: 100%;
+  }
+  .skills .row .row {
+    width: calc(100% / 4);
   }
   .aboutDiv {
     display: -webkit-box;
