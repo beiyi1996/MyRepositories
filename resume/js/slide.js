@@ -8,4 +8,9 @@ $(function() {
       .siblings(".mainNav")
       .toggleClass("slideDown");
   });
+
+  $("nav a").on("click", function(){
+    $(this).parents("nav.mainNav.slideUp.slideDown").removeClass("slideDown");
+    $(".navIcon").removeClass("active");
+  });
 });
