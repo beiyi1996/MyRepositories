@@ -275,7 +275,9 @@ li {
   margin: 0;
   color: #3d405b;
   .row {
-    margin: 10px 0;
+    margin: 5px 0;
+    width: 100%;
+    text-align: center;
   }
 }
 
@@ -316,6 +318,7 @@ section {
       text-align: center;
       justify-self: center;
       padding-top: 25px;
+      opacity: 0;
 
       &::before {
         content: "";
@@ -390,6 +393,32 @@ section {
         }
       }
     }
+
+    li.scrollFade{
+      opacity: 1;
+      transition: .5s ease-in-out;
+      
+      &:nth-of-type(odd){
+        transform: translateX(0px);
+      }
+
+      &:nth-of-type(even){
+        transform: translateX(0px);
+      }
+
+      &:nth-of-type(2) {
+        animation-delay: .6s;
+      }
+      &:nth-of-type(3) {
+        animation-delay: 0.65s;
+      }
+      &:nth-of-type(4) {
+        animation-delay: 0.7s;
+      }
+      &:nth-of-type(5) {
+        animation-delay: 0.75s;
+      }
+    }
   }
 }
 
@@ -421,6 +450,15 @@ section {
   .skills {
     flex-direction: row;
     text-align: center;
+    flex-wrap: wrap;
+    .row {
+      margin: 10px 0;
+      flex-wrap: wrap;
+      width: 100%;
+      .row{
+        width: calc(100% / 4);
+      }
+    }
   }
 
   .aboutDiv {
@@ -440,11 +478,13 @@ section {
         &:nth-child(odd) {
           text-align: right;
           justify-content: flex-start;
+          transform: translateX(-1000px);
         }
 
         &:nth-child(even) {
           text-align: left;
           justify-content: flex-end;
+          transform: translateX(1000px);
         }
       }
     }
